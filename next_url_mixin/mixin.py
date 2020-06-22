@@ -27,7 +27,8 @@ class NextUrlMixin(SuccessURLAllowedHostsMixin):
                 return next_url
 
     def form_valid(self, *args, **kwargs):
+        ret_val = super().form_valid(*args, **kwargs)
         next_page = self.get_next_page()
         if next_page:
             return HttpResponseRedirect(next_page)
-        return super().form_valid(*args, **kwargs)
+        return ret_val
