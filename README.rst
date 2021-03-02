@@ -11,10 +11,13 @@ Django next url mixin
 .. image:: https://codecov.io/gh/PetrDlouhy/django-next-url-mixin/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/PetrDlouhy/django-next-url-mixin
 
-Next url mixin which doesn't is safe to phishing attacks
+Next url mixin which is safe to phishing attacks
 
 Naive implementation of the next URL mechanism is vulnerable to phishing attacks.
-This implementation aims to 1) raise awareness of that 2) provide safe implementation (possibly seen by more eyes)
+This implementation aims to
+
+    1) raise awareness of that
+    2) provide safe implementation (possibly seen by more eyes)
 
 The mixin does it's work in form_valid() function, so it can be used for offspring of FormView or simillar view classes.
 
