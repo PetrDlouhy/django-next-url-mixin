@@ -6,7 +6,7 @@ except ImportError:  # Django < 3.0
     from django.utils.http import is_safe_url as url_has_allowed_host_and_scheme
 
 
-class NextUrlMixin(SuccessURLAllowedHostsMixin):
+class GetNextPageMixin(SuccessURLAllowedHostsMixin):
     next_url_param_name = 'next'
 
     def get_next_page(self):
@@ -26,6 +26,8 @@ class NextUrlMixin(SuccessURLAllowedHostsMixin):
             if url_is_safe:
                 return next_url
 
+
+class NextUrlMixin(GetNextPageMixin):
     def form_valid(self, *args, **kwargs):
         ret_val = super().form_valid(*args, **kwargs)
         next_page = self.get_next_page()
