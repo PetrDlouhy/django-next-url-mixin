@@ -1,5 +1,7 @@
 from django.contrib.auth.views import SuccessURLAllowedHostsMixin
 from django.http import HttpResponseRedirect
+
+
 try:
     from django.utils.http import url_has_allowed_host_and_scheme
 except ImportError:  # Django < 3.0
@@ -7,12 +9,12 @@ except ImportError:  # Django < 3.0
 
 
 class GetNextPageMixin(SuccessURLAllowedHostsMixin):
-    next_url_param_name = 'next'
+    next_url_param_name = "next"
 
     def get_next_page(self):
         if (
-                self.next_url_param_name in self.request.POST or
-                self.next_url_param_name in self.request.GET
+            self.next_url_param_name in self.request.POST
+            or self.next_url_param_name in self.request.GET
         ):
             next_url = self.request.POST.get(
                 self.next_url_param_name,
