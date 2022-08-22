@@ -1,4 +1,5 @@
-from django.contrib.auth.views import SuccessURLAllowedHostsMixin
+from typing import Set
+
 from django.http import HttpResponseRedirect
 
 
@@ -6,6 +7,13 @@ try:
     from django.utils.http import url_has_allowed_host_and_scheme
 except ImportError:  # Django < 3.0
     from django.utils.http import is_safe_url as url_has_allowed_host_and_scheme
+
+
+class SuccessURLAllowedHostsMixin:
+    success_url_allowed_hosts: Set[str] = set()
+
+    def get_success_url_allowed_hosts(self):
+        return {self.request.get_host(), *self.success_url_allowed_hosts}
 
 
 class GetNextPageMixin(SuccessURLAllowedHostsMixin):
