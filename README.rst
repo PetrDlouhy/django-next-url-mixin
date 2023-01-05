@@ -38,7 +38,7 @@ Use it in your views:
 .. code-block:: python
 
     from django.views.generic.edit import FormView
-    from next_url_mixin import NextUrlMixin
+    from next_url_mixin.mixin import NextUrlMixin
 
     class MyView(NextUrlMixin, FormView):
 
